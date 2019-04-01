@@ -13,13 +13,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
-Plugin 'dracula/vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
+Plugin 'rafi/awesome-vim-colorschemes'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -51,7 +51,7 @@ let g:syntastic_check_on_w = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
-let g:ackprg = 'ack --ignore-dir={build} --ignore-file=is:.eslintcache' 
+let g:ackprg = 'ack --ignore-dir=build --ignore-file=is:{.eslintcache,package-lock.json}' 
 " air-line
 let g:airline_powerline_fonts = 1
 
@@ -88,11 +88,22 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 35
 
-colorscheme dracula
+syntax enable
+colorscheme OceanicNext
 filetype plugin on
 
 nmap <C-n> :NERDTreeToggle<CR>
 map <C-k> :NERDTreeFind <CR>
 " tabs
  au FileType javascript
-         \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+         \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab 
+ au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
+ au FileType scss setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=4
+
+" position cursor inbetween brackets
+imap {<Tab> {}<Esc>i
+imap [<Tab> []<Esc>i
+imap (<Tab> ()<Esc>i
+imap '<Tab> ''<Esc>i
+imap `<Tab> ``<Esc>i
+imap "<Tab> ""<Esc>i
