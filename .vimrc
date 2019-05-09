@@ -20,6 +20,10 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'epilande/vim-react-snippets'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -82,12 +86,20 @@ let g:airline_symbols.linenr = ''
 " CtrlP settings
 let g:ctrlp_max_files = 20000
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" UltiSnipts
+let g:UltiSnipsExpandTrigger="<C-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" YCM
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
 
 " NERDTree settings
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 35
-
+let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 syntax enable
 colorscheme OceanicNext
 filetype plugin on
